@@ -13,6 +13,8 @@ import ParseUI
 
 class postCellTableViewCell: UITableViewCell {
     
+    
+    
     @IBOutlet weak var usernamePostLabel: UILabel!
    
     @IBOutlet weak var caption: UILabel!
@@ -21,7 +23,13 @@ class postCellTableViewCell: UITableViewCell {
     
     @IBOutlet weak var photoView: PFImageView!
 
+    @IBOutlet weak var likeCountLabel: UILabel!
+    
+  
     var query = PFQuery(className: "Post")
+    var objID = ""
+    var currentCount = 0
+    
 //    var instagramPost: PFObject! {
 //        didSet {
 //            self.photoView.file = instagramPost["image"] as? PFFile
@@ -29,6 +37,25 @@ class postCellTableViewCell: UITableViewCell {
 //        }
 //    }
 
+    @IBAction func likeButton(sender: AnyObject) {
+        currentCount += 1
+        var query = PFQuery(className: "Post")
+        query.getObjectInBackgroundWithId(objID) {
+            (object, error) -> Void in
+            if error != nil {
+                
+            }else {
+                object!["likesCount"] = self.currentCount as Int
+                self.likeCountLabel.text = "\(self.currentCount)"
+                print(object!["caption"])
+                object!.saveInBackground()
+                
+            }
+            
+            
+        }
+        
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

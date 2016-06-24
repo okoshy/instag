@@ -24,7 +24,8 @@ class ImagePickerController: UIViewController, UIImagePickerControllerDelegate, 
                 print("data uploaded, prepare for Sugue")
                 
                 //self.performSegueWithIdentifier("publishPost", sender: self)
-             self.tabBarController?.selectedIndex = 0
+             
+                self.tabBarController?.selectedIndex = 0
             
             }else {
                 print("Something went wrong uploading")

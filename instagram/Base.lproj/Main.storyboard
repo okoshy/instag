@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="HdC-21-ZYI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -77,12 +77,12 @@
                     <connections>
                         <outlet property="passwordField" destination="c8h-lM-LVi" id="pCh-su-Ksk"/>
                         <outlet property="usernameField" destination="gHv-7J-gCH" id="3wu-Yi-h6H"/>
-                        <segue destination="A1t-fd-OKh" kind="modal" identifier="LoginSegue" id="qlI-Do-SbY"/>
+                        <segue destination="A1t-fd-OKh" kind="modal" identifier="loginSegue" id="MKP-sz-64P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1083" y="-539"/>
+            <point key="canvasLocation" x="1220" y="-303"/>
         </scene>
         <!--Home-->
         <scene sceneID="rjk-DP-Iek">
@@ -101,6 +101,7 @@
                                 </state>
                                 <connections>
                                     <action selector="onSignOut:" destination="bzW-fP-k2L" eventType="touchUpInside" id="aH5-Qq-fo1"/>
+                                    <segue destination="BYZ-38-t0r" kind="modal" identifier="logoutSegue" id="8nL-0C-u5P"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="360" sectionHeaderHeight="28" sectionFooterHeight="28" id="tbJ-1b-Z1y">
@@ -116,7 +117,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caption" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="X64-0k-cn9">
-                                                    <rect key="frame" x="8" y="330" width="309" height="29.5"/>
+                                                    <rect key="frame" x="7" y="330" width="309" height="29.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -129,6 +130,10 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" red="0.00027387213887708234" green="0.54369556734865909" blue="0.67664021596858637" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="a2I-Ua-sn5" customClass="PFImageView">
+                                                    <rect key="frame" x="8" y="21" width="301" height="287"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TimeStamp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NQB-zA-aXq">
                                                     <rect key="frame" x="7" y="316" width="88" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -136,14 +141,26 @@
                                                     <color key="textColor" red="0.0003579832105" green="0.71067427849999998" blue="0.88444862570000005" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="a2I-Ua-sn5" customClass="PFImageView">
-                                                    <rect key="frame" x="8" y="21" width="301" height="287"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Like" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="boH-lg-MUv">
+                                                    <rect key="frame" x="287" y="312" width="22" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
+                                                    <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="18"/>
+                                                    <color key="textColor" red="0.0003579832105" green="0.71067427849999998" blue="0.88444862570000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wZo-oc-Kfs">
+                                                    <rect key="frame" x="255" y="315" width="32" height="24"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="iconmonstr-favorite-13-48"/>
+                                                    <connections>
+                                                        <action selector="likeButton:" destination="RUK-gX-DmY" eventType="touchUpInside" id="Mv5-lP-6Re"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="caption" destination="X64-0k-cn9" id="fBv-lW-bbn"/>
+                                            <outlet property="likeCountLabel" destination="boH-lg-MUv" id="vzY-xd-bGw"/>
                                             <outlet property="photoView" destination="a2I-Ua-sn5" id="Fa8-Xb-t76"/>
                                             <outlet property="timeStamp" destination="NQB-zA-aXq" id="VnZ-FV-aA5"/>
                                             <outlet property="usernamePostLabel" destination="3gK-Ah-rp8" id="GPe-De-il4"/>
@@ -156,11 +173,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="Qad-uD-z1o"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="tableView" destination="tbJ-1b-Z1y" id="twD-8L-i1K"/>
-                        <segue destination="HdC-21-ZYI" kind="modal" identifier="logoutSegue" id="LA7-GJ-0MV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PBt-cF-tIG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -207,6 +225,17 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Likes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tdZ-7f-jfk">
+                                <rect key="frame" x="288" y="437" width="24" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
+                                <color key="textColor" red="0.0003579832105" green="0.71067427849999998" blue="0.88444862570000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="iconmonstr-favorite-2-24" id="SgO-DU-a2I">
+                                <rect key="frame" x="256" y="438" width="24" height="24"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -214,6 +243,7 @@
                     <connections>
                         <outlet property="bottomUsernameLabel" destination="K7Q-tU-d28" id="Qw2-te-T6K"/>
                         <outlet property="captionLabel" destination="46V-CY-H8p" id="kfc-lG-nxP"/>
+                        <outlet property="likeCount" destination="tdZ-7f-jfk" id="gVe-av-0LV"/>
                         <outlet property="photoView" destination="GQr-lU-KJs" id="iba-Zf-VSe"/>
                         <outlet property="timeStampLabel" destination="f7b-mF-kaN" id="fvw-Xy-oLF"/>
                         <outlet property="usernameLabel" destination="rwL-RK-edH" id="AN6-Le-R3p"/>
@@ -341,7 +371,7 @@
                     <connections>
                         <outlet property="captionText" destination="N8i-QE-ZVO" id="xJ1-ma-Sdz"/>
                         <outlet property="imageView" destination="k9I-wB-9cZ" id="f1U-iJ-F40"/>
-                        <segue destination="bzW-fP-k2L" kind="modal" identifier="publishPost" id="Te8-8m-1CH"/>
+                        <segue destination="bzW-fP-k2L" kind="push" identifier="publishPost" id="Te8-8m-1CH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eMX-qM-GG9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -352,6 +382,7 @@
         <scene sceneID="oxX-Sm-cjU">
             <objects>
                 <tabBarController storyboardIdentifier="LoginView" id="A1t-fd-OKh" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ijS-7N-1RY"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="EFn-rc-xaV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -366,25 +397,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J5n-UH-8Xc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="850" y="158"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="oXc-oR-TNy">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HdC-21-ZYI" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yoJ-Rc-cJY">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.98737668067657902" green="1" blue="0.98006504452260235" alpha="1" colorSpace="calibratedRGB"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="dQk-OH-etF"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bhp-BZ-N5X" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="677" y="-1177"/>
         </scene>
         <!--Home-->
         <scene sceneID="Q3x-Bw-YRj">
@@ -409,7 +421,12 @@
             <point key="canvasLocation" x="78" y="961"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="iconmonstr-favorite-13-48" width="48" height="48"/>
+        <image name="iconmonstr-favorite-2-24" width="24" height="24"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Te8-8m-1CH"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.98737668069999995" green="1" blue="0.98006504449999998" alpha="1" colorSpace="calibratedRGB"/>
 </document>

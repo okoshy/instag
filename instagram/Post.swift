@@ -26,13 +26,13 @@ class Post: NSObject {
      */
     class func postUserImage(image: UIImage?, withCaption caption: String?, withCompletion completion: PFBooleanResultBlock?) {
         // Create Parse object PFObject
-        let post = PFObject(className: "Post")
         
+        let post = PFObject(className: "Post")
         
         post["media"] = getPFFileFromImage(image)
         post["author"] = PFUser.currentUser()
         post["caption"] = caption
-        post["likesCount"] = 0
+        post["likesCount"] = 1
         post["commentsCount"] = 0
         
         

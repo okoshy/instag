@@ -20,11 +20,14 @@ class imageDetailsViewController: UIViewController {
     
     @IBOutlet weak var captionLabel: UILabel!
     
+    @IBOutlet weak var likeCount: UILabel!
    
     @IBOutlet weak var bottomUsernameLabel: UILabel!
     
+    
     var post : PFObject!
     var username : String!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +44,7 @@ class imageDetailsViewController: UIViewController {
         self.photoView.loadInBackground()
         self.usernameLabel.text = self.post["author"].username
         self.bottomUsernameLabel.text = self.usernameLabel.text
+        self.likeCount.text = "\(post["likesCount"])"
         
         
     

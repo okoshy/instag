@@ -27,6 +27,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var username = PFUser.currentUser()!.username
     
     
+  
     
     @IBAction func onSignOut(sender: AnyObject) {
         print("Signing Out")
@@ -50,7 +51,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         var insets = tableView.contentInset;
         insets.bottom += InfiniteScrollActivityView.defaultHeight;
         tableView.contentInset = insets
-        fetchPosts()
+        loadMoreData()
+        
+        //NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "onTimer", userInfo: nil, repeats: true)
         
         // Do any additional setup after loading the view.
     }
@@ -62,7 +65,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     //    ?
     func refreshControlAction(refreshControl: UIRefreshControl) {
-        fetchPosts()
+        print("refresh control action")
+        loadMoreData()
         
         // ... Use the new data to update the data source ...
         
@@ -88,16 +92,22 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
                 let parsedCaption = post["caption"]
         
+        
                 cell.photoView.file = parsedImage
                 cell.caption.text = parsedCaption.description
                 cell.photoView.loadInBackground()
                 cell.usernamePostLabel.text = username
+        cell.likeCountLabel.text =  "\(post["likesCount"])"
+        cell.objID = post.objectId!
+        cell.currentCount = post["likesCount"] as! Int
+        
         let timestamp = post.createdAt! as NSDate
         let formatter = NSDateFormatter()
         formatter.dateStyle = NSDateFormatterStyle.LongStyle
         
         cell.timeStamp.text  = formatter.stringFromDate(timestamp)
                 print(username)
+        
                 
         
 
@@ -156,10 +166,12 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 // do something with the data fetched
                 self.posts.appendContentsOf(posts)
                 print (posts)
+               
                 
                 }
             
         }
+        
     }
     
     func loadMoreData() {
@@ -168,10 +180,17 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         print("Load more data")
         self.isMoreLoading = false
         //self.loadingMoreView!.stopAnimating()
+        
         self.tableView.reloadData()
         
         
     }
+    
+    func onTimer() {
+        fetchPosts()
+    }
+    
+    
     
         
         
@@ -191,6 +210,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let detailViewController = segue.destinationViewController as! imageDetailsViewController
         
             detailViewController.post = post
+        }
+        if(segue.identifier == "logoutSegue") {
+            print("logging out")
         }
         
         
