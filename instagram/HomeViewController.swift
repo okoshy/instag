@@ -186,6 +186,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
+    
+    
     func onTimer() {
         fetchPosts()
     }
