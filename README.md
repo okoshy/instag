@@ -1,8 +1,8 @@
-# Project 3 - *Name of App Here*
+# Project 3 - *FinstaGram*
 
-**Name of your app** is a photo sharing app using Parse as its backend.
+**FinstaGram** is a photo sharing app using Parse as its backend.
 
-Time spent: **X** hours spent in total
+Time spent: **30** hours spent in total
 
 ## User Stories
 
@@ -38,14 +38,20 @@ The following **additional** features are implemented:
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. How to make your own models
+2. Making network requests
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
 <img src='http://i.imgur.com/mFtVPWy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/yrLQmq4.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/uCjxlpU.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/C3oYcT5.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/fvHaUMC.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
@@ -59,6 +65,11 @@ List an 3rd party libraries, icons, graphics, or other assets you used in your a
 ## Notes
 
 Describe any challenges encountered while building the app.
+-Issues with network request
+-Issues with getting home view to work
+-Issues pulling data from my post query and putting them in certain areas
+
+
 
 ## License
 
