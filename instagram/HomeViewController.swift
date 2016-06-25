@@ -27,6 +27,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var username = PFUser.currentUser()!.username
     
     
+    
   
     
     @IBAction func onSignOut(sender: AnyObject) {
@@ -37,7 +38,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(username!)
+        
         tableView.delegate = self
         tableView.dataSource = self
         let refreshControl = UIRefreshControl()
@@ -51,7 +52,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         var insets = tableView.contentInset;
         insets.bottom += InfiniteScrollActivityView.defaultHeight;
         tableView.contentInset = insets
-        loadMoreData()
+        refreshData()
         
         //NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "onTimer", userInfo: nil, repeats: true)
         
@@ -66,7 +67,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     //    ?
     func refreshControlAction(refreshControl: UIRefreshControl) {
         print("refresh control action")
-        loadMoreData()
+        refreshData()
         
         // ... Use the new data to update the data source ...
         
@@ -96,7 +97,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 cell.photoView.file = parsedImage
                 cell.caption.text = parsedCaption.description
                 cell.photoView.loadInBackground()
-                cell.usernamePostLabel.text = username
+        let author = post["author"]
+        cell.usernamePostLabel.text = author.username
         cell.likeCountLabel.text =  "\(post["likesCount"])"
         cell.objID = post.objectId!
         cell.currentCount = post["likesCount"] as! Int
@@ -184,6 +186,27 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.tableView.reloadData()
         
         
+    }
+    
+    func refreshData() {
+        let query = PFQuery(className: "Post")
+        print("refreshData")
+        query.orderByDescending("createdAt")
+        query.includeKey("author")
+        query.limit = 2
+        query.skip = 0
+        self.posts = []
+        
+        query.findObjectsInBackgroundWithBlock { (posts: [PFObject]?, error: NSError?) -> Void in
+            if let posts = posts {
+                print("fire off network request")
+                self.loadingMoreView!.stopAnimating()
+                // do something with the data fetched
+                self.posts.appendContentsOf(posts)
+
+            
+            }
+        }
     }
     
     
